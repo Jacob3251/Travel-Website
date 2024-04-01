@@ -32,14 +32,18 @@ const Navbar = () => {
       setActiveNav("tour-packages");
       console.log(activeNav);
     }
+    if (location.pathname === "/contact-us") {
+      setActiveNav("contact-us");
+      console.log(activeNav);
+    }
   }, [location, activeNav]);
   return (
     <div className="">
       {/* mobile navbar */}
 
-      <div className="flex 2xl:hidden">
+      <div className="flex xl:hidden">
         <div
-          className={`fixed flex justify-between top-0 h-[80px] w-full bg-white z-50 p-5 ${
+          className={`fixed flex justify-between top-0 h-[80px] w-full bg-[#333333] z-50 p-5 ${
             openMini ? "drop-shadow-none" : " drop-shadow-md"
           }`}
         >
@@ -60,33 +64,30 @@ const Navbar = () => {
         </div>
         <div
           className={`fixed ${
-            !openMini ? "-translate-x-[100%]" : "translate-x-0"
-          } duration-500 h-[calc(100vh-80px)] top-[80px] bg-white  w-full flex flex-col  justify-center items-center   text-[24px] px-5 md:px-10 md:text-[32px]  z-50`}
+            !openMini ? "-translate-y-[100%]" : "translate-y-0"
+          } duration-500 h-auto top-[80px] bg-[#333333] bg-opacity-95  w-full flex flex-col  justify-center items-center    text-[18px] px-5 md:px-10 md:text-[24px]  z-40`}
         >
-          <div className="w-full space-y-3">
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+          <div className="w-full space-y-3 flex  justify-center items-center flex-col">
+            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
               Home
             </div>
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
               About Us
             </div>
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
               Tour Packages
             </div>
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
               Contact Us
             </div>
           </div>
-          <div className="w-full space-y-3 mt-5">
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+          <div className="w-full space-y-3 mt-5 flex flex-col justify-center items-center pb-8">
+            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
               Login
             </div>
-            <div className="border-b-2 text-[#333333] drop-shadow-md bg-white px-5 rounded-md w-full py-3">
+            <div className="text-white bg-btnPrimary drop-shadow-md  px-5 rounded-xl text-center inline-block  font-bold  py-3">
               Signup
             </div>
-          </div>
-          <div className=" text-[18px]  text-[#333333] w-full mt-5 flex  justify-center items-end">
-            <h1>Copyright © 2024. All rights reserved.</h1>
           </div>
         </div>
       </div>
@@ -94,7 +95,7 @@ const Navbar = () => {
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className={`hidden z-50 xl:px-[120px] bg-[#333333]  h-[120px] duration-300 w-full max-w-[1440px] 2xl:flex justify-between items-center`}
+        className={`hidden z-50 xl:px-[120px] bg-[#333333]  h-[120px] duration-300 w-full max-w-[1440px] xl:flex justify-between items-center`}
       >
         <div className="w-1/3">
           <div className="w-[65px] h-[65px]">
@@ -104,7 +105,7 @@ const Navbar = () => {
         {/* navOptions */}
         <div className="flex w-full justify-between items-center">
           <div className={`text-white  text-[20px] font-semibold`}>
-            <ul className="flex space-x-[40px]">
+            <ul className="flex space-x-[10px] 2xl:space-x-[40px]">
               <div>
                 <div className={`group  overflow-hidden relative   z-10`}>
                   <Link to="/">
@@ -147,14 +148,14 @@ const Navbar = () => {
                   ></div>
                 </div>
               </div>
-              <div onClick={() => handleNav("contact")}>
+              <div>
                 <div className={`group  overflow-hidden relative   z-10`}>
                   <Link to="/contact-us">
                     <li className="px-2 py-2">Contact Us</li>
                   </Link>
                   <div
                     className={`w-full h-[5px]  bottom-0 z-20  absolute bg-btnPrimary  ${
-                      activeNav === "contact"
+                      activeNav === "contact-us"
                         ? "group-hover:-translate-x-0 duration-300"
                         : "-translate-x-[100%] group-hover:-translate-x-0 duration-300 "
                     }`}

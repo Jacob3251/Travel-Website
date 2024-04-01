@@ -10,9 +10,9 @@ import { useRef } from "react";
 function Testimonials() {
   const swiperRef = useRef();
   return (
-    <div className="px-[10px] md:px-[50px] my-[160px]">
+    <div className="px-[10px] md:px-[50px] my-[50px] md:my-[160px]">
       <div className="flex space-y-5 xl:space-y-0 xl:justify-between flex-col  xl:flex-row xl:items-start mb-[60px] xl:px-[30px]">
-        <div className="text-[#333333] font-extrabold text-[32px]">
+        <div className="text-[#333333] font-extrabold text-[24px] md:text-[32px]">
           Happy Customer Says
         </div>
         <div className="flex space-x-3">

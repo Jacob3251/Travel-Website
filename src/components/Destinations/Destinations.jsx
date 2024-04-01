@@ -90,7 +90,7 @@ function Destinations() {
           loop={true}
           navigation={true}
           autoplay={{
-            delay: 225,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Navigation]}
