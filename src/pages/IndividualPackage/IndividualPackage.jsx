@@ -20,6 +20,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import IndividualPackageCarousel from "../../components/IndividualPackageCarousel/IndividualPackageCarousel";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // const css = `
 //   .my-selected:not([disabled]){
 //     font-weight:bold;
@@ -161,9 +162,11 @@ function IndividualPackage() {
                 isSearchable
               />
             </div>
-            <button className="w-full lg:w-auto bg-btnPrimary text-white text-[18px] rounded-lg px-3 py-3">
-              Buy Now
-            </button>
+            <Link to="/booking">
+              <button className="w-full lg:w-auto bg-btnPrimary text-white text-[18px] rounded-lg px-3 py-3">
+                Buy Now
+              </button>
+            </Link>
           </div>
         </div>
         {/* details part */}
