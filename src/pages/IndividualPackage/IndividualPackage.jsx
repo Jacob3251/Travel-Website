@@ -8,10 +8,6 @@ import { IoLocationSharp } from "react-icons/io5";
 import DefaultLayout from "../../layouts/DefaultLayout";
 import { RiTimer2Line } from "react-icons/ri";
 import { BsArrowLeft } from "react-icons/bs";
-import gallery1 from "../../assets/images/individualPackages/biketour/gallery/1.png";
-import gallery2 from "../../assets/images/individualPackages/biketour/gallery/2.png";
-import gallery3 from "../../assets/images/individualPackages/biketour/gallery/3.png";
-import gallery4 from "../../assets/images/individualPackages/biketour/gallery/4.png";
 import Testimonials from "../../components/Testimonials/Testimonials";
 import Select, { components } from "react-select";
 import "swiper/css";
@@ -19,17 +15,9 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import IndividualPackageCarousel from "../../components/IndividualPackageCarousel/IndividualPackageCarousel";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-// const css = `
-//   .my-selected:not([disabled]){
-//     font-weight:bold;
-//     background-color: #FA8B02;
-//     color: white;
-//   }
-// `;
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-// react select dropdown settings
+import { tours } from "../../assets/data";
 
 const DropdownIndicator = (props) => {
   return (
@@ -40,6 +28,11 @@ const DropdownIndicator = (props) => {
 };
 
 function IndividualPackage() {
+  const param = useParams();
+  const navigate = useNavigate();
+  // console.log(param.id);
+  const individualData = tours.find((item) => item.id === parseInt(param.id));
+  // console.log(individualData);
   // const [selected, setSelected] = useState();
   const options1 = [
     { value: "1am", label: "1:00 am" },
@@ -53,7 +46,10 @@ function IndividualPackage() {
       <div className=" mt-[80px] xl:mt-0 px-2 md:px-[80px] xl:px-[120px] ">
         {/* back button */}
         <div className=" ">
-          <button className="text-[18px] flex justify-center items-center text-[#333333] py-3">
+          <button
+            onClick={() => navigate(-1)}
+            className="text-[18px] flex justify-center items-center text-[#333333] py-3"
+          >
             <BsArrowLeft className="mr-[10px]" />
             Back
           </button>
@@ -63,26 +59,26 @@ function IndividualPackage() {
         <div className="flex flex-col lg:flex-row w-full space-y-[40px] lg:space-y-[0px] lg:space-x-[40px] mb-[40px] md:mb-[80px] lg:mb-[120px] justify-center items-start">
           {/* carousel part */}
           <div className="w-full lg:w-[50%] text-[#333333] min-h-[300px] ">
-            <IndividualPackageCarousel></IndividualPackageCarousel>
+            <IndividualPackageCarousel
+              images={individualData.carouselImages}
+            ></IndividualPackageCarousel>
           </div>
           {/* description part */}
           <div className="w-full lg:w-[50%] ">
             {/* package heading */}
             <h1 className="text-[26px] font-extrabold mb-[16px]">
-              Lucca Bike Tour
+              {individualData.title}
             </h1>
             {/* package pricing */}
             <div className="text-[16px] font-semibold mb-[16px] flex items-center">
               <span className="mr-2">from </span>
               <span className="text-[22px] font-extrabold text-btnPrimary">
-                340$
+                {individualData.price}$
               </span>
             </div>
             {/* package description */}
             <p className="text-[14px] font-light leading-[20px] mb-[16px]">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum
-              ipsum maiores enim beatae excepturi dicta tenetur explicabo
-              repudiandae est aperiam!
+              {individualData.detail}
             </p>
             {/* date selector */}
             {/* <div className="flex flex-col justify-center md:justify-start items-start  w-full ">
@@ -162,7 +158,7 @@ function IndividualPackage() {
                 isSearchable
               />
             </div>
-            <Link to="/booking">
+            <Link to={`/booking/${individualData.id}`}>
               <button className="w-full lg:w-auto bg-btnPrimary text-white text-[18px] rounded-lg px-3 py-3">
                 Buy Now
               </button>
@@ -244,32 +240,32 @@ function IndividualPackage() {
           <h1 className="text-[24px] md:text-[32px] font-bold md:font-extrabold mb-[14px] md:mb-[56px]">
             Gallery
           </h1>
-          <div className="grid grid-cols-5 lg:grid-cols-4 grid-flow-dense grid-rows-2 gap-[4px] md:gap-[10px]">
+          <div className="grid grid-cols-5 lg:grid-cols-4 grid-flow-dense grid-rows-2 gap-[4px] md:gap-[10px] max-h-[600px]">
             <div className="col-span-3 row-span-2 lg:col-span-2  lg:row-span-2 rounded-sm md:rounded-md xl:rounded-lg overflow-hidden">
               <img
                 className="object-cover h-full w-full "
-                src={gallery1}
+                src={individualData.galleryImages[0]}
                 alt=""
               />
             </div>
             <div className="col-span-2 row-span-1 lg:col-span-1  lg:row-span-1 rounded-sm md:rounded-md xl:rounded-lg overflow-hidden">
               <img
                 className="object-cover h-full w-full "
-                src={gallery2}
+                src={individualData.galleryImages[1]}
                 alt=""
               />
             </div>
             <div className="col-span-1 row-span-1 lg:col-span-1  lg:row-span-2 rounded-sm md:rounded-md xl:rounded-lg overflow-hidden">
               <img
                 className="object-cover h-full w-full "
-                src={gallery4}
+                src={individualData.galleryImages[2]}
                 alt=""
               />
             </div>
             <div className="col-span-1 row-span-1 lg:col-span-1  lg:row-span-1 rounded-sm md:rounded-md xl:rounded-lg overflow-hidden">
               <img
                 className="object-cover h-full w-full "
-                src={gallery3}
+                src={individualData.galleryImages[3]}
                 alt=""
               />
             </div>

@@ -52,16 +52,16 @@ function Hero() {
   const [dateValue, setDateValue] = useState("Choose Date");
   const [selected, setSelected] = useState();
 
-  useEffect(() => {
-    if (showDatePicker) {
-      if (selected) {
-        const date = format(selected, "PP");
-        console.log(date);
-        setDateValue(date);
-        setShowDatePicker(false);
-      }
-    }
-  }, [showDatePicker, selected]);
+  // useEffect(() => {
+  //   if (showDatePicker) {
+  //     if (selected) {
+  //       const date = format(selected, "PP");
+  //       console.log(date);
+  //       setDateValue(selected);
+  //       setShowDatePicker(false);
+  //     }
+  //   }
+  // }, [showDatePicker, selected]);
   return (
     <div className="max-w-[1440px] min-h-screen xl:min-h-[765px] w-full mx-auto relative flex justify-center items-center ">
       <img
@@ -70,7 +70,7 @@ function Hero() {
         alt=""
       />
 
-      <div className="text-white text-center p-5 flex md:space-x-[50px] xl:space-x-10 flex-col md:flex-row xl:flex-col justify-center xl:items-center">
+      <div className="text-white text-center p-5 flex sm:space-y-[10%] xl:space-y-[0px] flex-col justify-center xl:items-center">
         {/* hero heading */}
         <div className="w-full xl:mb-[60px] pt-20 pb-10 md:pt-0 md:pb-0 md:mt-[120px] xl:mt-0">
           <h1 className="podcast text-[46px] md:text-[72px] ">
@@ -120,16 +120,18 @@ function Hero() {
               <div
                 onClick={() => {
                   setShowDatePicker(!showDatePicker);
-                  setSelected(null);
-                  console.log(dateValue);
+                  // setSelected(null);
+                  // console.log(dateValue);
                 }}
-                className="relative  flex w-full min-w-[180px] h-[51px] justify-end mt-2  items-center"
+                className="relative flex w-full min-w-[180px] h-[51px] justify-end mt-2  items-center"
               >
                 <div className="w-full text-[18px]  overflow-hidden text-ellipsis text-[#333333]  flex justify-center items-center  h-[52px] rounded-md">
                   <input
-                    className="w-full h-full outline-none text-center text-[14px]"
-                    value={dateValue}
+                    className="w-full cursor-default h-full outline-none text-center text-[14px] placeholder:text-[#333333] placeholder:text-opacity-75"
+                    value={selected ? format(selected, "PP") : ""}
                     type="text"
+                    readOnly
+                    placeholder="Choose Date"
                   />
                   <MdKeyboardArrowDown className="text-[32px]" />
                 </div>
@@ -145,6 +147,7 @@ function Hero() {
                     />
                   </div>
                 )}
+                {/* {selected && console.log(selected)} */}
               </div>
             </div>
             <div className="flex justify-center items-center ">
@@ -289,8 +292,9 @@ function Hero() {
             </div>
 
             {/* search btn */}
-            <button className="bg-btnPrimary p-5 rounded-lg">
+            <button className="bg-btnPrimary p-5 rounded-lg flex justify-center items-center">
               <IoSearchOutline className="text-[46px]" />
+              <span className="text-white text-[24px] xl:hidden">Search</span>
             </button>
           </div>
         </div>

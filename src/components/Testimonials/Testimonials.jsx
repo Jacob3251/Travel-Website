@@ -17,13 +17,13 @@ function Testimonials() {
         </div>
         <div className="flex space-x-3">
           <button
-            className="bg-[#e5e5e5] rounded-full w-[40px] h-[40px] flex justify-center items-center text-[24px]"
+            className="bg-[#e5e5e5] rounded-full w-[40px] h-[40px] flex justify-center items-center text-[24px] text-white"
             onClick={() => swiperRef.current.slidePrev()}
           >
             <MdKeyboardArrowLeft />
           </button>
           <button
-            className="bg-btnPrimary rounded-full w-[40px] h-[40px] flex justify-center items-center text-[24px]"
+            className="bg-btnPrimary rounded-full w-[40px] h-[40px] flex justify-center items-center text-[24px] text-white"
             onClick={() => swiperRef.current.slideNext()}
           >
             <MdKeyboardArrowRight />

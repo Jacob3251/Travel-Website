@@ -3,6 +3,7 @@ import { RiTimer2Line } from "react-icons/ri";
 import "animate.css";
 import Select, { components } from "react-select";
 import { useState } from "react";
+import { format } from "date-fns";
 
 const DropdownIndicator = (props) => {
   return (
@@ -20,7 +21,7 @@ function BookingDetails({
 }) {
   const { incrementActive } = increment;
   const { onChange } = functions;
-  const { adultNumber, childrenNumber, infantNumber } = info;
+  const { adultNumber, childrenNumber, infantNumber, date } = info;
   const [timeSelected, setTimeSelected] = useState(null);
   //   const { decrementActive } = decrement;
 
@@ -79,6 +80,10 @@ function BookingDetails({
     { value: "4am", label: "4:00 am" },
     { value: "5am", label: "5:00 am" },
   ];
+  let todayDate = new Date();
+  let recentDate = `${todayDate.getFullYear()}-${
+    todayDate.getMonth() + 1
+  }-${todayDate.getDate()}`;
   return (
     <div className="animate__animated animate__fadeInUp">
       {/* date */}
@@ -92,6 +97,7 @@ function BookingDetails({
           type="date"
           name="date"
           id="date"
+          value={date ? date : recentDate}
         />
       </div>
 

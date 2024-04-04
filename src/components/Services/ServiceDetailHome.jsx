@@ -37,7 +37,7 @@ function ServiceDetailHome() {
       {data.map((item) => (
         <div
           key={item.id}
-          className=" flex flex-col max-w-screen  md:max-w-[330px] w-full m-5 lg:m-8 xl:m-3"
+          className=" flex flex-col max-w-screen  md:max-w-[290px] w-full m-3 lg:m-8 xl:m-3"
         >
           <div className="w-full mb-[20px]">
             <img className="w-full" src={item.imgLink} alt="" />

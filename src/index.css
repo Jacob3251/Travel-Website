@@ -13,6 +13,10 @@
 
 :root {
   font-family: "Open Sans", sans-serif;
+  background-color: #ffffff;
+}
+body {
+  margin: 0 0;
 }
 
 .ctabg {

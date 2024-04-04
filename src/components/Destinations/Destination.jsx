@@ -13,10 +13,10 @@ function Destination({ data }) {
     }
   }, [location.pathname, showBtn]);
   return (
-    <Link to="/tour-packages/1">
+    <Link to={`/tour-packages/${data.id}`}>
       <div className="h-full w-full">
         {/* img part */}
-        <div className="h-[404px] w-full rounded-[24px]">
+        <div className="h-[404px] w-full rounded-[24px] overflow-hidden">
           <img className="w-full h-full " src={data.imglink} alt="" />
         </div>
         <div className="mt-[16px]">

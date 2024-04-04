@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import BookingCta from "../../components/Cta/BookingCta";
 import ContactCta from "../../components/Cta/ContactCta";
 import Destinations from "../../components/Destinations/Destinations";
@@ -9,6 +10,8 @@ import Testimonials from "../../components/Testimonials/Testimonials";
 import DefaultLayout from "../../layouts/DefaultLayout";
 
 function Home() {
+  // const location = useLocation();
+  // const from = location?.state?.from?.pathname || "/";
   return (
     <DefaultLayout>
       <Hero></Hero>

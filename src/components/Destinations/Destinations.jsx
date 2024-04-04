@@ -10,68 +10,69 @@ import "swiper/css/navigation";
 import "./DestinationSwiper.css";
 
 import { Autoplay, Navigation } from "swiper/modules";
-const data = [
-  {
-    id: 1,
-    title: "Lucca Bike Tour",
-    price: "34",
-    day: "EVERY DAY",
-    people: "3-5",
-    detail:
-      "A tour of the city and its surroundings led by a professional guide ...",
-    imglink: biketour,
-  },
-  {
-    id: 2,
-    title: "Wine tasting In Tuscany",
-    price: "104",
-    day: "MONDAY",
-    people: "10-50",
-    detail:
-      "The real magic is here where you can enjoy the best Tuscan wine and eat ...",
-    imglink: wineTesting,
-  },
-  {
-    id: 3,
-    title: "Cinque Terre Tour",
-    price: "34",
-    day: "TO BE DECIDED",
-    people: "10-50",
-    detail:
-      "Visiting the 5 Terre is a must, and you can never go there enough ...",
-    imglink: tour,
-  },
-  {
-    id: 4,
-    title: "Siena and Surroundings",
-    price: "254",
-    day: "TO BE DECIDED",
-    people: "5-10",
-    detail:
-      "Visit the beautiful Siena and the cities that surround it to experience ...",
-    imglink: surroundings,
-  },
-  {
-    id: 4,
-    title: "Siena and Surroundings",
-    price: "254",
-    day: "TO BE DECIDED",
-    people: "5-10",
-    detail:
-      "Visit the beautiful Siena and the cities that surround it to experience ...",
-    imglink: surroundings,
-  },
-  {
-    id: 4,
-    title: "Siena and Surroundings",
-    price: "254",
-    day: "TO BE DECIDED",
-    people: "5-10",
-    detail:
-      "Visit the beautiful Siena and the cities that surround it to experience ...",
-    imglink: surroundings,
-  },
-];
+import { tours } from "../../assets/data";
+// const data = [
+//   {
+//     id: 1,
+//     title: "Lucca Bike Tour",
+//     price: "34",
+//     day: "EVERY DAY",
+//     people: "3-5",
+//     detail:
+//       "A tour of the city and its surroundings led by a professional guide ...",
+//     imglink: biketour,
+//   },
+//   {
+//     id: 2,
+//     title: "Wine tasting In Tuscany",
+//     price: "104",
+//     day: "MONDAY",
+//     people: "10-50",
+//     detail:
+//       "The real magic is here where you can enjoy the best Tuscan wine and eat ...",
+//     imglink: wineTesting,
+//   },
+//   {
+//     id: 3,
+//     title: "Cinque Terre Tour",
+//     price: "34",
+//     day: "TO BE DECIDED",
+//     people: "10-50",
+//     detail:
+//       "Visiting the 5 Terre is a must, and you can never go there enough ...",
+//     imglink: tour,
+//   },
+//   {
+//     id: 4,
+//     title: "Siena and Surroundings",
+//     price: "254",
+//     day: "TO BE DECIDED",
+//     people: "5-10",
+//     detail:
+//       "Visit the beautiful Siena and the cities that surround it to experience ...",
+//     imglink: surroundings,
+//   },
+//   {
+//     id: 4,
+//     title: "Siena and Surroundings",
+//     price: "254",
+//     day: "TO BE DECIDED",
+//     people: "5-10",
+//     detail:
+//       "Visit the beautiful Siena and the cities that surround it to experience ...",
+//     imglink: surroundings,
+//   },
+//   {
+//     id: 4,
+//     title: "Siena and Surroundings",
+//     price: "254",
+//     day: "TO BE DECIDED",
+//     people: "5-10",
+//     detail:
+//       "Visit the beautiful Siena and the cities that surround it to experience ...",
+//     imglink: surroundings,
+//   },
+// ];
 function Destinations() {
   return (
     <div className="w-full  px-[20px] xl:px-[150px] my-[100px] lg:my-[120px]">
@@ -96,7 +97,7 @@ function Destinations() {
           modules={[Autoplay, Navigation]}
           className="mySwiper"
         >
-          {data.map((item) => (
+          {tours.map((item) => (
             <SwiperSlide key={item.id}>
               <Destination data={item}></Destination>
             </SwiperSlide>

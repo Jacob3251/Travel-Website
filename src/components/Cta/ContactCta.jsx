@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import girl from "../../assets/images/Cta/girl.png";
 function ContactCta() {
+  const navigate = useNavigate();
   return (
     <div className="ctabg bg-no-repeat bg-cover w-full px-[20px] lg:px-[50px] xl:px-[150px] py-[60px] flex justify-center items-center lg:justify-between lg:items-start relative my-[150px]">
       {/* cta content */}
@@ -12,7 +14,10 @@ function ContactCta() {
           eveniet modi repellendus optio. Molestias distinctio corrupti cumque,
           consequuntur soluta magni!
         </p>
-        <button className="rounded-[50px] bg-btnPrimary text-white p-[10px] text-[16px] lg:text-[20px] font-semibold">
+        <button
+          onClick={() => navigate("/contact-us")}
+          className="rounded-[50px] bg-btnPrimary text-white p-[10px] text-[16px] lg:text-[20px] font-semibold"
+        >
           Contact Us
         </button>
       </div>

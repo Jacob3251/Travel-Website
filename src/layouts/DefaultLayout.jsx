@@ -1,4 +1,3 @@
-import { Toaster } from "react-hot-toast";
 import Footer from "../components/Shared/Footer";
 import Navbar from "../components/Shared/Navbar";
 
@@ -8,7 +7,6 @@ function DefaultLayout({ children }) {
       <Navbar></Navbar>
       {children}
       <Footer></Footer>
-      <Toaster position="bottom-right" reverseOrder={false} />
     </div>
   );
 }

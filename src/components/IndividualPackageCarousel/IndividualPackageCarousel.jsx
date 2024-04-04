@@ -2,10 +2,6 @@ import { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import image1 from "../../assets/images/individualPackages/biketour/1.png";
-import image2 from "../../assets/images/individualPackages/biketour/2.png";
-import image3 from "../../assets/images/individualPackages/biketour/3.png";
-import image4 from "../../assets/images/individualPackages/biketour/4.png";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -13,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import "./IndividualPackageCarousel.css";
 import { FreeMode, Thumbs } from "swiper/modules";
-function IndividualPackageCarousel() {
+function IndividualPackageCarousel({ images }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <div id="individual-package-carousel w-full relative">
@@ -31,18 +27,11 @@ function IndividualPackageCarousel() {
         modules={[FreeMode, Thumbs]}
         className="mySwiper2"
       >
-        <SwiperSlide>
-          <img src={image1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image3} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image4} />
-        </SwiperSlide>
+        {images.map((item, index) => (
+          <SwiperSlide key={index}>
+            <img src={item} />
+          </SwiperSlide>
+        ))}
       </Swiper>
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -54,18 +43,11 @@ function IndividualPackageCarousel() {
         modules={[FreeMode, Thumbs]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src={image1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image3} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={image4} />
-        </SwiperSlide>
+        {images.map((item, index) => (
+          <SwiperSlide key={index}>
+            <img src={item} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

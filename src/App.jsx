@@ -5,7 +5,7 @@ import TourPackages from "./pages/TourPackages/TourPackages";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import IndividualPackage from "./pages/IndividualPackage/IndividualPackage";
 import Booking from "./pages/Booking/Booking";
-
+import RequireAuth from "./components/Shared/RequireAuth";
 function App() {
   const router = createBrowserRouter([
     {
@@ -29,8 +29,12 @@ function App() {
       element: <ContactUs></ContactUs>,
     },
     {
-      path: "/booking",
-      element: <Booking></Booking>,
+      path: "/booking/:id",
+      element: (
+        <RequireAuth>
+          <Booking></Booking>
+        </RequireAuth>
+      ),
     },
   ]);
   return <RouterProvider router={router} />;

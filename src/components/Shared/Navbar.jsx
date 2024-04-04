@@ -4,11 +4,13 @@ import navLogo from "../../assets/images/Navbar/logo.png";
 import { CiMenuFries } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
   // const active = "border-b-2 border-btnPrimary";
   const [activeNav, setActiveNav] = useState("");
   const [hovered, setHovered] = useState(false);
+  const { loginWithRedirect, logout, isAuthenticated, error } = useAuth0();
+
   const handleNav = (selectedNav) => {
     setActiveNav(selectedNav);
   };
@@ -48,8 +50,12 @@ const Navbar = () => {
           }`}
         >
           <div className="h-full flex items-center">
-            <img className="h-full" src={navLogo} alt="" />
-            <span className="text-btnPrimary uppercase font-extrabold text-[20px] md:text-[24px]">
+            <img
+              className="h-full w-[50px] hidden sm:block"
+              src={navLogo}
+              alt=""
+            />
+            <span className="text-btnPrimary uppercase font-extrabold text-[20px] md:text-[24px] ml-5">
               Tours to Tuscany
             </span>
           </div>
@@ -68,26 +74,62 @@ const Navbar = () => {
           } duration-500 h-auto top-[80px] bg-[#333333] bg-opacity-95  w-full flex flex-col  justify-center items-center    text-[18px] px-5 md:px-10 md:text-[24px]  z-40`}
         >
           <div className="w-full space-y-3 flex  justify-center items-center flex-col">
-            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
-              Home
-            </div>
-            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
-              About Us
-            </div>
-            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
-              Tour Packages
-            </div>
-            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
-              Contact Us
-            </div>
+            <Link to="/">
+              <div
+                className={`${
+                  activeNav === "" ? "text-btnPrimary" : "text-white"
+                }  drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3`}
+              >
+                Home
+              </div>
+            </Link>
+            <Link to="/about-us">
+              <div
+                className={`${
+                  activeNav === "about-us" ? "text-btnPrimary" : "text-white"
+                }  drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3`}
+              >
+                About Us
+              </div>
+            </Link>
+            <Link to="/tour-packages">
+              <div
+                className={`${
+                  activeNav === "tour-packages"
+                    ? "text-btnPrimary"
+                    : "text-white"
+                }  drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3`}
+              >
+                Tour Packages
+              </div>
+            </Link>
+            <Link to="/contact-us">
+              <div
+                className={`${
+                  activeNav === "contact-us" ? "text-btnPrimary" : "text-white"
+                }  drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3`}
+              >
+                Contact Us
+              </div>
+            </Link>
           </div>
           <div className="w-full space-y-3 mt-5 flex flex-col justify-center items-center pb-8">
-            <div className="text-white drop-shadow-md  px-5 rounded-md text-center inline-block  font-bold  py-3">
-              Login
-            </div>
-            <div className="text-white bg-btnPrimary drop-shadow-md  px-5 rounded-xl text-center inline-block  font-bold  py-3">
-              Signup
-            </div>
+            {!isAuthenticated && (
+              <button
+                className="bg-btnPrimary py-[10px] px-[24px] rounded-[50px] text-white font-bold"
+                onClick={() => loginWithRedirect()}
+              >
+                Login
+              </button>
+            )}
+            {isAuthenticated && (
+              <button
+                className="bg-btnPrimary py-[10px] px-[24px] rounded-[50px] text-white font-bold"
+                onClick={() => logout()}
+              >
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -98,7 +140,7 @@ const Navbar = () => {
         className={`hidden z-50 xl:px-[120px] bg-[#333333]  h-[120px] duration-300 w-full max-w-[1440px] xl:flex justify-between items-center`}
       >
         <div className="w-1/3">
-          <div className="w-[65px] h-[65px]">
+          <div className="w-[60px] aspect-square">
             <img src={navLogo} className="h-full w-full" alt="" />
           </div>
         </div>
@@ -176,14 +218,29 @@ const Navbar = () => {
                   />
                 </li>
               </a>
-              <a href="#">
-                <li className={`text-white`}>Login</li>
-              </a>
-              <a href="#">
-                <li className="bg-btnPrimary py-[10px] px-[24px] rounded-[50px]">
-                  Sign Up
-                </li>
-              </a>
+              {/* {user && (
+                <button>
+                  <li className={`text-white`}>Login</li>
+                </button>
+              )} */}
+
+              {!isAuthenticated && (
+                <button
+                  className="bg-btnPrimary py-[10px] px-[24px] rounded-[50px]"
+                  onClick={() => loginWithRedirect()}
+                >
+                  Login
+                </button>
+              )}
+              {isAuthenticated && (
+                <button
+                  className="bg-btnPrimary py-[10px] px-[24px] rounded-[50px]"
+                  onClick={() => logout()}
+                >
+                  Logout
+                </button>
+              )}
+              {/* {error && <p>{console.log(error)}</p>} */}
             </ul>
           </div>
         </div>
